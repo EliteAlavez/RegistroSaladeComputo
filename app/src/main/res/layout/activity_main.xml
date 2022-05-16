@@ -10,61 +10,62 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="vertical"
-        tools:layout_editor_absoluteX="-38dp"
-        tools:layout_editor_absoluteY="-117dp">
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
 
-        <TextView
-            android:id="@+id/textView2"
+        <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="@string/strRegistrar" />
-
-        <EditText
-            android:id="@+id/editTextTextPersonName"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:ems="10"
-            android:inputType="textPersonName"
-            android:text="Name" />
-
-        <EditText
-            android:id="@+id/editTextTextPersonName2"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:ems="10"
-            android:inputType="textPersonName"
-            android:text="Name" />
-
-        <TextView
-            android:id="@+id/textView4"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="TextView" />
-
-        <RadioGroup
-            android:layout_width="match_parent"
-            android:layout_height="40dp"
             android:orientation="horizontal">
 
-            <RadioButton
-                android:id="@+id/rbtGrupoA"
-                android:text="RadioButton" />
-
-            <RadioButton
-                android:id="@+id/radioButton2"
+            <Button
+                android:id="@+id/bitacora"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_margin="2dp"
                 android:layout_weight="1"
-                android:text="RadioButton" />
-        </RadioGroup>
+                android:onClick="bitacoraBoton"
+                android:text="Bitácora"
+                android:textSize="10sp" />
 
-        <Button
-            android:id="@+id/button2"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:gravity="center"
-            android:text="Button" />
+            <Button
+                android:id="@+id/Estudiantes"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="2dp"
+                android:layout_weight="1"
+                android:onClick="estudianteBoton"
+                android:text="Estudiantes"
+                android:textSize="10sp" />
 
+            <Button
+                android:id="@+id/materias"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="2dp"
+                android:layout_weight="1"
+                android:onClick="materiasBoton"
+                android:text="Materias"
+                android:textSize="10sp" />
+
+            <Button
+                android:id="@+id/salasComputo"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="2dp"
+                android:layout_weight="1"
+                android:onClick="salasBoton"
+                android:text="Salas"
+                android:textSize="10sp" />
+        </LinearLayout>
+
+        <FrameLayout
+            android:id="@+id/contenedor"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+        </FrameLayout>
     </LinearLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>

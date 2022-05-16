@@ -1,10 +1,18 @@
 package com.example.registrosaladecomputo
 
 import android.os.Bundle
+import android.os.Environment
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Button
+import android.widget.EditText
+import android.widget.RadioButton
+import android.widget.TextView
+import java.io.BufferedWriter
+import java.io.File
+import java.io.FileWriter
 
 // TODO: Rename parameter arguments, choose names that match
 // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -33,8 +41,43 @@ class Fragment_Materias : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment__materias, container, false)
+        val view: View = inflater.inflate(R.layout.fragment__materias, container, false)
+        accionBoton(view)
+        return view
+    }
+
+    fun accionBoton(view: View){
+        val boton: Button = view.findViewById(R.id.btnAgregarM)
+        boton.setOnClickListener {
+            val clave: EditText = view.findViewById(R.id.textClave)
+            val nommateria: EditText = view.findViewById(R.id.textNomMateria)
+            val dateF: EditText = view.findViewById(R.id.editTextDate)
+
+            var cadena: String = "${clave.text.toString()},${nommateria.text.toString()},${dateF.text.toString()}"
+            escribirArchivo("materias", cadena)
+
+            val datos: TextView = view.findViewById(R.id.txtDatoM)
+            datos.setText("${datos.text.toString()} \n $cadena")
+        }
+    }
+
+    fun escribirArchivo(nombre: String, contenido: String) {
+        val ruta = Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_DOWNLOADS).toString()
+        val nombreArchivo = "$nombre.txt"
+        val archivo = File(ruta + "/" + nombreArchivo)
+
+        if (!archivo.exists()) {
+            archivo.createNewFile()
+            println(archivo.path)
+        }
+
+        val fileWrite: FileWriter = FileWriter(archivo, true)
+
+        val escribir: BufferedWriter = BufferedWriter(fileWrite)
+        escribir.write("$contenido")
+
+        escribir.close()
+        fileWrite.close()
     }
 
     companion object {
